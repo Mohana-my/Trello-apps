@@ -1,0 +1,36 @@
+<app-nav></app-nav>
+<div class="boards-wrapper col-md-6">
+  <h2>Plans</h2>
+  <div id="boards" *ngFor="let trello of trello">
+    <a class="board" [routerLink]="['/trello', trello.id, trello.name]">
+      <span class="title">{{ trello.name }}</span>
+    </a>
+  </div>
+  <div class="board add-card">
+    <label class="btn">Create new Board</label>
+    <button class="button" type="reset">
+      <i data-toggle="modal" data-target="#myModal" style="font-size:24px" class="fa">&#xf0fe;</i>
+    </button>
+  </div>
+</div>
+<div class="container ">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add new Trello Plan</h4>
+        </div>
+        <div class="modal-body">
+          Enter the Trelloname:<input type="text" required [(ngModel)]="trelloname" /><br /><br />
+          Enter the Boardname:<input type="text" required [(ngModel)]="boardname" /><br /><br />
+          Enter the cardname:<input type="text" required [(ngModel)]="cardname" /><br /><br />
+        </div>
+        <div class="modal-footer">
+          <button type="submit" type="reset" class=" btn btn-primary" data-dismiss="modal" (click)="addTrello()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
