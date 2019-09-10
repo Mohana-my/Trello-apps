@@ -14,14 +14,12 @@ export class ColumnComponent implements OnInit {
   boardid: number;
   cardid: number;
   cardname: string;
-  pname: string;
   id: number;
   name: string;
   constructor(
     private boardservice: BoardService,
     private route: ActivatedRoute
   ) {}
-
   ngOnInit() {
     this.name = this.route.snapshot.paramMap.get("name");
     this.id = parseInt(this.route.snapshot.paramMap.get("id"));
@@ -32,7 +30,16 @@ export class ColumnComponent implements OnInit {
       $(".sortable-list").sortable({
         connectWith: ".sortable-list",
         opacity: "0.5",
-        cursor: "move"
+        cursor: "move",
+        stop: function() {
+          $(".sortable-list").each(function() {
+            console.log($(this).sortable("toArray"));
+          });
+        },
+        receive: function(event, ui) {
+          var element = ui.item.index();
+          console.log(element);
+        }
       });
     });
   }

@@ -2,7 +2,7 @@
 <div class="board ">
     <h3 class="bcbc" *ngIf="id === trello.id">{{trello.name}}</h3>
     <div  *ngIf="trello.board.length > 0; else defaultCard">
-      <div class="list-wrapper  container-fluid" id="board" *ngFor="let boards of trello.board">
+      <div class="list-wrapper container-fluid" id="board" *ngFor="let boards of trello.board">
         <div class="list-header row">
           <span class="list-title col-sm-3 col-md-4" *ngIf="id===trello.id">{{boards.name}}</span>
         </div>

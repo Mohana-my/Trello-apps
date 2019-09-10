@@ -1,6 +1,6 @@
 export interface Trello
 {
-    id:number ;
+    id:number;
     name:string; 
     board:Board[];
 }
